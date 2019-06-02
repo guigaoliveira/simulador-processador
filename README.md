@@ -1,7 +1,7 @@
 # Simulador de um processador
-Esse projeto consiste em um trabalho realizado para a disciplina DCA0104 – Arquitetura de Computadores da UFRN. 
+Esse repositório possui os códigos para um trabalho da disciplina DCA0104 – Arquitetura de Computadores da UFRN. 
 
-O problema consiste em simular um processador hipotético, inspirado no modelo do IAS de Von Neumann, cujo diagramade blocos é apresentado a seguir. Ele contém uma memória de 1,0 kWord, endereçável a words de 2bytes (16 bits). Esta memória é segmentada em duas regiões. Na primeira, os endereços vão de 0 até 511 e são exclusivos para armazenamento de instruções. Já o segundo segmento tem endereços quevão de 512 até 1023, exclusivo para armazenamento de dados. O tamanho da palavra (word) manipulada por esse processador é de 16 bits (2 bytes). Esse processador é desenvolvido com um conjunto de registradores especiais, todos de 16 bits:
+O problema do trabalho consiste em simular um processador hipotético, inspirado no modelo do IAS de Von Neumann, cujo diagramade blocos é apresentado a seguir. Ele contém uma memória de 1,0 kWord, endereçável a words de 2bytes (16 bits). Esta memória é segmentada em duas regiões. Na primeira, os endereços vão de 0 até 511 e são exclusivos para armazenamento de instruções. Já o segundo segmento tem endereços quevão de 512 até 1023, exclusivo para armazenamento de dados. O tamanho da palavra (word) manipulada por esse processador é de 16 bits (2 bytes). Esse processador é desenvolvido com um conjunto de registradores especiais, todos de 16 bits:
 
 - AC (acumulador);
 - MQ (quociente multiplicador);
