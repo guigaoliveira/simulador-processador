@@ -10,6 +10,7 @@ O problema consiste em simular um processador hipotético, inspirado no modelo d
 - MAR (registrador de endereço da memória).Não há registradores de uso geral.
 
 Todos os dados devem ser armazenados em alguma posição damemória, no segmento para dados. As instruções têm também 16 bits de tamanho, onde 6 bits são para o código da operação (opcode) eos 10 bits restantes ou são para endereçamento da memória (em algumas instruções) ou valor don't care. A tabela a seguir apresenta parte do conjunto de instruções que tem interesse direto neste problema:
+
 | Opcode | Representação em Ling. de Montagem | Descrição |
 |---|---|---|
 | 001010 | LOAD MQ | Transfere o conteúdo do MQ para AC. |
