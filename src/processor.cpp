@@ -16,7 +16,7 @@ Processor::Processor()
     std::fill(memory, memory + MEMORY_LENGTH, 0);
 }
 
-void Processor::setAddressInMemoryData(const int address, const int value)
+void Processor::setAddressInMemoryData(int address, int value)
 {
     if (address >= 512 && address <= 1023)
     {
@@ -28,7 +28,7 @@ void Processor::setAddressInMemoryData(const int address, const int value)
     }
 }
 
-int Processor::getAddressInMemoryData(const int address)
+int Processor::getAddressInMemoryData(int address)
 {
     if (address >= 512 && address <= 1023)
     {
@@ -41,7 +41,7 @@ int Processor::getAddressInMemoryData(const int address)
     }
 }
 
-void Processor::setAddressInMemoryInstrution(const int address, const int value)
+void Processor::setAddressInMemoryInstrution(int address, int value)
 {
     if (address >= 0 && address <= 511)
     {
@@ -69,12 +69,12 @@ bool Processor::tryFetchInstruction()
     return true;
 }
 
-int Processor::extractKBitsOfPositionP(const int number, const int k, const int p)
+int Processor::extractKBitsOfPositionP(int number, int k, int p)
 {
     return (((1 << k) - 1) & (number >> (p - 1)));
 }
 
-void Processor::decodeInstruction(const int opcode, const int addressOrDontCare)
+void Processor::decodeInstruction(int opcode, int addressOrDontCare)
 {
     std::cout << "------" << std::endl;
     switch (opcode)
@@ -119,6 +119,7 @@ void Processor::decodeInstruction(const int opcode, const int addressOrDontCare)
         std::cout << "MUL " << addressOrDontCare << "\n";
         std::cout << "AC=" << AC << ", "
                   << "MQ= " << MQ << "\n";
+        // verificar com o professor
         break;
     }
     case 12: // 001100 DIV X
@@ -132,7 +133,7 @@ void Processor::decodeInstruction(const int opcode, const int addressOrDontCare)
     std::cout << "------" << std::endl;
 }
 
-bool Processor::tryDecodeInstruction(const int instruction)
+bool Processor::tryDecodeInstruction(int instruction)
 {
     int addressOrDontCare = getAddressOrDontCare(instruction);
     if (addressOrDontCare != 0 && !(addressOrDontCare >= 512 && addressOrDontCare <= 1023))
@@ -147,17 +148,17 @@ bool Processor::tryDecodeInstruction(const int instruction)
     return true;
 }
 
-int Processor::getAddressOrDontCare(const int instruction)
+int Processor::getAddressOrDontCare(int instruction)
 {
     return extractKBitsOfPositionP(instruction, 10, 7);
 }
 
-int Processor::getOpcode(const int instruction)
+int Processor::getOpcode(int instruction)
 {
     return extractKBitsOfPositionP(instruction, OPCODE_LENGTH, 1);
 }
 
-int Processor::encodeInstruction(const int opcode, const int addressOrDontCare)
+int Processor::encodeInstruction(int opcode, int addressOrDontCare)
 {
     std::bitset<16> instrutionInBinary;
     if (
@@ -168,16 +169,15 @@ int Processor::encodeInstruction(const int opcode, const int addressOrDontCare)
         std::cout << "Nao e possivel representar opcode ou endereco";
         return -1;
     }
-    for (std::size_t i = 0; i < OPCODE_LENGTH; ++i)
+    for (size_t i = 0; i < OPCODE_LENGTH; ++i)
     {
         instrutionInBinary[i] = (opcode >> i) & 1;
     } // adiciona os bits do opcode
-    std::size_t totalBitsOfAddress = addressOrDontCare && static_cast<int>(log2(addressOrDontCare)) + 1;
-    for (std::size_t i = 0; i < totalBitsOfAddress; ++i)
+    int totalBitsOfAddress = (int)(log2(addressOrDontCare)) + 1;
+    for (int i = 0; i < totalBitsOfAddress; ++i)
     {
         instrutionInBinary[OPCODE_LENGTH + i] = (addressOrDontCare >> i) & 1;
     } // adiciona os bits do endereço
-    std::cout << totalBitsOfAddress << '\n';
     return static_cast<int>(instrutionInBinary.to_ulong());
 }
 
@@ -199,7 +199,7 @@ void Processor::createProgram(std::vector<int> memoryAdresses, std::vector<Instr
     {
         return;
     }
-    for (std::size_t i = 0; i < instructionsSize; i++)
+    for (std::size_t i = 0; i < instructionsSize; ++i)
     {
         int instruction = encodeInstruction(instructions[i].opcode, instructions[i].addressOrDontCare);
         setAddressInMemoryInstrution(memoryAdresses[i], instruction);

@@ -19,7 +19,7 @@ private:
     /* 
         Método que seta um valor em um endereço da parte da memória para as instruções 
     */
-    void setAddressInMemoryInstrution(const int address, const int value);
+    void setAddressInMemoryInstrution(int address, int value);
     /*
         Metódo que pega / busca uma instrução da memória de instruções
     */
@@ -32,28 +32,28 @@ private:
         Metódo para extrair k bits da posição p
         e retorna o valor extraído como inteiro
     */
-    int extractKBitsOfPositionP(const int number, const int k, const int p);
+    int extractKBitsOfPositionP(int number, int k, int p);
     /* 
         Metódo para reconhecer uma instrução com base no opcode
     */
-    void decodeInstruction(const int opcode, const int addressOrDontCare);
+    void decodeInstruction(int opcode, int addressOrDontCare);
     /*
         Método para tentar reconhecer uma instrução com base no opcode
     */
-    bool tryDecodeInstruction(const int instruction);
+    bool tryDecodeInstruction(int instruction);
     /* 
         Metódo que pega o endereço / dont care da instrução (inteiro)
     */
-    int getAddressOrDontCare(const int instruction);
+    int getAddressOrDontCare(int instruction);
     /* 
         Metódo que pega o opcode da instrução (inteiro)
     */
-    int getOpcode(const int instruction);
+    int getOpcode(int instruction);
     /*
         Metódo que transforma um opcode e um endereço / dont care em um inteiro de 16 bits.
         (que os 6 primeiros bits são o opcode e os outros 10 são o endereço, para esse caso)
     */
-    int encodeInstruction(const int opcode, const int addressOrDontCare);
+    int encodeInstruction(int opcode, int addressOrDontCare);
     /*
         Metódo que executa as instruções na memória de instruções
     */
@@ -67,11 +67,11 @@ public:
     /* 
         Método que seta um valor em um endereço da parte da memória para os dados 
     */
-    void setAddressInMemoryData(const int address, const int value);
+    void setAddressInMemoryData(int address, int value);
     /*
         Método que retorna um valor em um endereço da memória de dados  
     */
-    int getAddressInMemoryData(const int address);
+    int getAddressInMemoryData(int address);
     /* 
         Método que seta um valor em um endereço da parte da memória para as instruções 
     */
