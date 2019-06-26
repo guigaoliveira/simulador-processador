@@ -1,7 +1,7 @@
 # Simulador de um processador
 Esse repositório possui os códigos para um trabalho da disciplina DCA0104 – Arquitetura de Computadores da UFRN. 
 
-O problema do trabalho consiste em simular um processador hipotético, inspirado no modelo do IAS de Von Neumannr. Ele contém uma memória de 1,0 kWord, endereçável a words de 2 bytes (16 bits). Esta memória é segmentada em duas regiões. Na primeira, os endereços vão de 0 até 511 e são exclusivos para armazenamento de instruções. Já o segundo segmento tem endereços que vão de 512 até 1023, exclusivo para armazenamento de dados. O tamanho da palavra (word) manipulada por esse processador é de 16 bits (2 bytes). Esse processador é desenvolvido com um conjunto de registradores especiais, todos de 16 bits:
+O problema do trabalho consiste em simular um processador hipotético, inspirado no modelo do IAS de Von Neumann. Ele contém uma memória de 1,0 kWord, endereçável a words de 2 bytes (16 bits). Esta memória é segmentada em duas regiões. Na primeira, os endereços vão de 0 até 511 e são exclusivos para armazenamento de instruções. Já o segundo segmento tem endereços que vão de 512 até 1023, exclusivo para armazenamento de dados. O tamanho da palavra (word) manipulada por esse processador é de 16 bits (2 bytes). Esse processador é desenvolvido com um conjunto de registradores especiais, todos de 16 bits:
 
 - AC (acumulador);
 - MQ (quociente multiplicador);
@@ -12,7 +12,7 @@ O problema do trabalho consiste em simular um processador hipotético, inspirado
 
 Não há registradores de uso geral. Todos os dados devem ser armazenados em alguma posição da memória, no segmento para dados. 
 
-As instruções têm também 16 bits de tamanho, onde 6 bits são para o código da operação (opcode) e os 10 bits restantes ou são para endereçamento da memória (em algumas instruções) ou valor don't care. A tabela a seguir apresenta parte do conjunto de instruções que tem interesse direto neste problema:
+As instruções têm também 16 bits de tamanho, onde 6 bits são para o código da operação (opcode) e os 10 bits restantes ou são para endereçamento da memória (em algumas instruções) ou valor "don't care". A tabela a seguir apresenta parte do conjunto de instruções que tem interesse direto neste problema:
 
 | Opcode | Representação em Ling. de Montagem | Descrição |
 |---|---|---|
